@@ -15,9 +15,9 @@ import java.util.Arrays;
  */
 public class OracleAccessLayer implements DataAccessLayer {
 
-    Connection conn;
+    private Connection conn;
 
-    public void openConnection() {
+    private void openConnection() {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "pos", "admin");
@@ -26,7 +26,7 @@ public class OracleAccessLayer implements DataAccessLayer {
         }
     }
 
-    public void closeConnection() {
+    private void closeConnection() {
         try {
             conn.close();
         } catch (SQLException e) {
