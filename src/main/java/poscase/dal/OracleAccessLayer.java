@@ -51,6 +51,8 @@ public class OracleAccessLayer implements DataAccessLayer {
                         .name(resultSet.getString("NAME"))
                         .lastName(resultSet.getString("LASTNAME")).build();
             }
+
+            stmt.close();
         } catch (Exception e) {
             System.out.println(e);
         } finally {
@@ -80,6 +82,7 @@ public class OracleAccessLayer implements DataAccessLayer {
             } else {
                 result = true;
             }
+            stmt.close();
         } catch (Exception e) {
             System.out.println(e);
         } finally {
