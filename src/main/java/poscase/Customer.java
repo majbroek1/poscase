@@ -15,5 +15,4 @@ import lombok.NoArgsConstructor;
 public class Customer {
     private int customerId, customerCode;
     private String name, lastName;
-
 }

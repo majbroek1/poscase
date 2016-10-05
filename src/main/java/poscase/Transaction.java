@@ -16,48 +16,47 @@ public abstract class Transaction {
     protected Collection<LineItem> lineItems = new ArrayList<LineItem>();
     protected Session session;
 
-    public void registerTransaction(Session session){
+    public void registerTransaction(Session session) {
         this.session = session;
     }
 
-    public void outPut(){
+    public void outPut() {
 
     }
 
-    public void addItem(Product prod){
+    public void addItem(Product prod) {
         Iterator<LineItem> itemIterator = lineItems.iterator();
         boolean found = false;
-        while (itemIterator.hasNext()){
+        while (itemIterator.hasNext()) {
             LineItem itItem = itemIterator.next();
-            if (itItem.getProduct().equals(prod)){
+            if (itItem.getProduct().equals(prod)) {
                 found = true;
                 itItem.addItem();
             }
         }
-        if (!found){
+        if (!found) {
             lineItems.add(new LineItem(prod));
         }
     }
 
-    public void removeItem(Product prod){
+    public void removeItem(Product prod) {
         Iterator<LineItem> itemIterator = lineItems.iterator();
-        while (itemIterator.hasNext()){
+        while (itemIterator.hasNext()) {
             LineItem itItem = itemIterator.next();
-            if (itItem.getProduct().equals(prod)){
-                if (itItem.getQuantity() > 1){
+            if (itItem.getProduct().equals(prod)) {
+                if (itItem.getQuantity() > 1) {
                     itItem.removeItem();
-                }
-                else{
+                } else {
                     itemIterator.remove();
                 }
             }
         }
     }
 
-    public float getTotalPrice(){
+    public float getTotalPrice() {
         Iterator<LineItem> itemIterator = lineItems.iterator();
         float totalPrice = 0F;
-        while(itemIterator.hasNext()){
+        while (itemIterator.hasNext()) {
             LineItem itItem = itemIterator.next();
             totalPrice = totalPrice + (itItem.getQuantity() * itItem.getProduct().getPrice());
         }

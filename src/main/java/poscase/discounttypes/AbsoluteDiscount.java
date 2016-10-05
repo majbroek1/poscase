@@ -11,15 +11,14 @@ public class AbsoluteDiscount extends Discount {
     private float priceModifier;
     private Product product;
 
-    public AbsoluteDiscount(float priceModifier, Product product){
-        this.priceModifier=priceModifier;
+    public AbsoluteDiscount(float priceModifier, Product product) {
+        this.priceModifier = priceModifier;
         this.product = product;
     }
 
-    public float calculateDiscount(){
-        return (product.getPrice()-priceModifier);
+    public float calculateDiscount() {
+        return (product.getPrice() - priceModifier);
     }
-
 
 
 }
